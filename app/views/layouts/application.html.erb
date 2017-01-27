@@ -8,22 +8,32 @@
   <meta name="robots" content="noindex">
 </head>
 <body>
-
-<div class="container">
-  <div>
-    <span><%= link_to '進捗状況', request_applications_path %></span>　｜　
-    <span><%= link_to '部署/プロジェクト', depts_path %></span>　
-    <span><%= link_to '機種', models_path %></span>　
-    <span><%= link_to '担当課', sections_path %></span>　｜　
-    <span><%= link_to 'フロー順登録', flow_orders_path %></span>　｜　
-    <span><%= link_to t('.request_applications_export_csv'), search_request_applications_path %></span>　｜　
-    <span><%= link_to t('.for_matching_datas_import_csv'), for_matching_datas_import_path %></span>　｜　
-    <span><%= link_to t('.for_matching_datas_model_code'), for_matching_datas_model_code_path %></span>
-  </div>
-  <div>
-    <span><%= link_to t('.request_application_matching'), matching_request_applications_path %></span>
-  </div>
-  <hr>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+    <!-- 中央のナビゲーション部分 ================ -->
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a href="#">新規要求書登録</a></li>
+          <li><a href="/">登録済要求書一覧</a></li>
+          <li><a href="<%= search_request_applications_path %>">K-PEACEﾃﾞｰﾀ取得用CSV出力</a></li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">リコンサイル関連機能
+              <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="<%= matching_request_applications_path %>">リコンサイル指示</a></li>
+                <li><a href="<%= for_matching_datas_import_path %>">K-PEACEﾃﾞｰﾀｲﾝﾎﾟｰﾄ</a></li>
+                <li><a href="<%= for_matching_datas_model_code_path %>">登録済K-PEACE機種ｺｰﾄﾞ一覧</a></li>
+              </ul>
+            </li>
+        </ul>
+    <!-- 右寄せになる部分 ================ -->
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="/maintenance">メンテナンス</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<div class="container" style='margin-top: 50px;'>
   <% if notice.present? || alert.present? %>
     <div class="row">
       <% if notice.present? %>
